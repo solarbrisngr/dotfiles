@@ -1,0 +1,41 @@
+[include]
+	path = ~/.gitconfig-local
+[diff]
+	tool = meld
+[merge]
+	tool = meld
+[difftool]
+	prompt = false
+[core]
+	pager = less -FiXR
+	excludesfile = ~/.gitignore-global
+	# abbrev = 8
+[pull]
+	rebase = true
+[push]
+	default = simple
+[fetch]
+	prune = true
+[color]
+	ui = auto
+	status = auto
+[log]
+	decorate = short
+[color "status"]
+	added = blue
+	updated = cyan
+	changed = yellow
+	untracked = red
+[alias]
+	graph = log --graph --oneline --decorate
+	graph-all = log --graph --oneline --decorate --branches='*'
+	showtool = "!showci () { rev=${1:-HEAD}; git difftool $rev~1 $rev; }; showci $1"
+	mr = !sh -c 'git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2' -
+	commend = commit --amend --no-edit
+	st = status
+    co = checkout
+[init]
+	defaultBranch = main
+[pager]
+    stash = false
+
